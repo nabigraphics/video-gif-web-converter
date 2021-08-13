@@ -4,10 +4,15 @@ import FFmpegService from "./services/ffmpeg";
 
 import Logger from "./components/Logger";
 import Uploader from "./components/Uploader";
+import PreviousConvertStep from "./components/PreviousConvertStep";
 
 const App = () => {
   const [initialized, setInitialized] = useState(false);
-  const [file, setFile] = useState();
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleReset = () => {
+    setFile(null);
+  };
 
   useEffect(() => {
     FFmpegService.init();
@@ -18,7 +23,11 @@ const App = () => {
       {/* Loger Component */}
       <Logger />
       {/* Uploader Component */}
-      <Uploader />
+      {!file && <Uploader onFileChange={setFile} />}
+      {/* PreviousConvertStep (File Selected) */}
+      {file && (
+        <PreviousConvertStep originalFile={file} onReset={handleReset} />
+      )}
       {/* Loading Component */}
       {/* Result Component */}
     </div>
