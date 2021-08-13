@@ -5,13 +5,21 @@ import FFmpegService from "./services/ffmpeg";
 import Logger from "./components/Logger";
 import Uploader from "./components/Uploader";
 import PreviousConvertStep from "./components/PreviousConvertStep";
+import useFFmpegConvert from "./hooks/useFFmpegConvert";
 
 const App = () => {
   const [initialized, setInitialized] = useState(false);
   const [file, setFile] = useState<File | null>(null);
 
+  const { isLoading, isDone, isError, convertedData, convert } =
+    useFFmpegConvert(file);
+
   const handleReset = () => {
     setFile(null);
+  };
+
+  const handleConvert = () => {
+    convert();
   };
 
   useEffect(() => {
@@ -25,11 +33,17 @@ const App = () => {
       {/* Uploader Component */}
       {!file && <Uploader onFileChange={setFile} />}
       {/* PreviousConvertStep (File Selected) */}
-      {file && (
-        <PreviousConvertStep originalFile={file} onReset={handleReset} />
+      {file && !convertedData && !isLoading && (
+        <PreviousConvertStep
+          originalFile={file}
+          onConvert={handleConvert}
+          onReset={handleReset}
+        />
       )}
       {/* Loading Component */}
+      {isLoading && <div>Loading...</div>}
       {/* Result Component */}
+      {isDone && <div>Done!</div>}
     </div>
   );
 };

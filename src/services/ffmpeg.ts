@@ -9,6 +9,9 @@ class FFmpegService {
     await this.ffmpeg.load();
     cb?.();
   }
+  async writeFile(filename: string, file: File) {
+    this.ffmpeg.FS("writeFile", filename, await fetchFile(file));
+  }
 }
 
 export default new FFmpegService();
