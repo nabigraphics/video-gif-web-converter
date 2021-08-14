@@ -8,6 +8,7 @@ import Uploader from "./components/Uploader";
 import PreviousConvertStep from "./components/PreviousConvertStep";
 import ConvertResultContainer from "./components/ConvertResultContainer";
 import useFFmpegConvert from "./hooks/useFFmpegConvert";
+import GlobalStyle from "./components/GlobalStyle";
 
 const App = () => {
   const [initialized, setInitialized] = useState(false);
@@ -29,7 +30,8 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <>
+      <GlobalStyle />
       {/* Loger Component */}
       <Logger />
       {/* Uploader Component */}
@@ -51,7 +53,7 @@ const App = () => {
           convertedData={convertedData}
         />
       )}
-    </div>
+    </>
   );
 };
 
