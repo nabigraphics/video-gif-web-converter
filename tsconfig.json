@@ -3,7 +3,6 @@
     "target": "ES2015",
     "module": "commonjs",
     "jsx": "preserve",
-
     "moduleResolution": "node",
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
