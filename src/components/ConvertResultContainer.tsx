@@ -20,14 +20,14 @@ const ConvertResultContainer = ({
   return (
     <StyledWrapperBox>
       {originalBlobUrl && (
-        <StyledConvertedFileContainer>
+        <div>
           <StyledText>Original</StyledText>
           <FileCard
             src={originalBlobUrl}
             fileName={originalFile.name}
             fileType={originalFile.type}
           />
-        </StyledConvertedFileContainer>
+        </div>
       )}
       {convertedBlobUrl && (
         <StyledConvertedFileContainer>
