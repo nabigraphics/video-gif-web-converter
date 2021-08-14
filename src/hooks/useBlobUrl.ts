@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useFileBlobUrl = (file: File | null) => {
+const useBlobUrl = (file: File | Blob | null) => {
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
 
   useEffect(() => {
@@ -22,4 +22,4 @@ const useFileBlobUrl = (file: File | null) => {
   return blobUrl;
 };
 
-export default useFileBlobUrl;
+export default useBlobUrl;

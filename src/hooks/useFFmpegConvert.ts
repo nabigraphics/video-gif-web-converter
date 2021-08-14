@@ -3,7 +3,7 @@ import getFilenameWithoutFileType from "../utils/getFilenameWithoutFileType";
 
 import FFmpegService from "../services/ffmpeg";
 
-interface ConvertedDataType {
+export interface ConvertedDataType {
   blob: Blob;
   mimeType: string;
   fileName: string;
@@ -33,8 +33,12 @@ const useFFmpegConvert = (file: File | null) => {
       const newFileMIMEType = isGif ? "video/mp4" : "image/gif";
       const newFileName = getFilenameWithoutFileType(file.name) + newFileType;
 
-      await FFmpegService.writeFile(file.name, file);
-      await FFmpegService.ffmpeg.run("-i", file.name, newFileName);
+      await FFmpegService.writeFile(encodeURI(file.name), file);
+      await FFmpegService.ffmpeg.run(
+        "-i",
+        encodeURI(file.name),
+        encodeURI(newFileName)
+      );
       const data = FFmpegService.ffmpeg.FS("readFile", newFileName);
       FFmpegService.ffmpeg.FS("unlink", newFileName);
 

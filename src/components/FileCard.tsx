@@ -1,5 +1,5 @@
 import React from "react";
-
+import styled from "@emotion/styled";
 interface FileCardProps {
   src: string;
   fileName: string;
@@ -11,7 +11,7 @@ const FileCard = ({ src, fileName, fileType }: FileCardProps) => {
     case "image/gif":
       return (
         <div>
-          <img src={src} />
+          <StyledImage src={src} />
           {fileName}
           {fileType}
         </div>
@@ -19,7 +19,7 @@ const FileCard = ({ src, fileName, fileType }: FileCardProps) => {
     case "video/mp4":
       return (
         <div>
-          <video src={src} />
+          <StyledVideo controls src={src} />
           {fileName}
           {fileType}
         </div>
@@ -35,3 +35,13 @@ const FileCard = ({ src, fileName, fileType }: FileCardProps) => {
 };
 
 export default FileCard;
+
+const StyledImage = styled.img`
+  max-width: 640px;
+  width: 100%;
+`;
+
+const StyledVideo = styled.video`
+  max-width: 640px;
+  width: 100%;
+`;

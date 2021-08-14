@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import useFileBlobUrl from "../hooks/useFileBlobUrl";
+import useBlobUrl from "../hooks/useBlobUrl";
 import getFilenameWithoutFileType from "../utils/getFilenameWithoutFileType";
 import FileCard from "./FileCard";
 
@@ -14,7 +14,7 @@ const PreviousConvertStep = ({
   onConvert,
   onReset,
 }: PreviousConvertStepProps) => {
-  const blobUrl = useFileBlobUrl(originalFile);
+  const blobUrl = useBlobUrl(originalFile);
 
   const fileName = useMemo(
     () => getFilenameWithoutFileType(originalFile.name),
