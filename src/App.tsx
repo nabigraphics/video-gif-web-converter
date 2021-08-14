@@ -9,6 +9,7 @@ import PreviousConvertStep from "./components/PreviousConvertStep";
 import ConvertResultContainer from "./components/ConvertResultContainer";
 import useFFmpegConvert from "./hooks/useFFmpegConvert";
 import GlobalStyle from "./components/GlobalStyle";
+import styled from "@emotion/styled";
 
 const App = () => {
   const [initialized, setInitialized] = useState(false);
@@ -34,27 +35,38 @@ const App = () => {
       <GlobalStyle />
       {/* Loger Component */}
       <Logger />
-      {/* Uploader Component */}
-      {!file && <Uploader onFileChange={setFile} />}
-      {/* PreviousConvertStep (File Selected) */}
-      {file && !convertedData && !isLoading && (
-        <PreviousConvertStep
-          originalFile={file}
-          onConvert={handleConvert}
-          onReset={handleReset}
-        />
-      )}
-      {/* Loading Component */}
-      {isLoading && <div>Loading...</div>}
-      {/* Result Component */}
-      {file && isDone && (
-        <ConvertResultContainer
-          originalFile={file}
-          convertedData={convertedData}
-        />
-      )}
+      <StyledLayoutContainer>
+        {/* Uploader Component */}
+        {!file && <Uploader onFileChange={setFile} />}
+        {/* PreviousConvertStep (File Selected) */}
+        {file && !convertedData && !isLoading && (
+          <PreviousConvertStep
+            originalFile={file}
+            onConvert={handleConvert}
+            onReset={handleReset}
+          />
+        )}
+        {/* Loading Component */}
+        {isLoading && <div>Loading...</div>}
+        {/* Result Component */}
+        {file && isDone && (
+          <ConvertResultContainer
+            originalFile={file}
+            convertedData={convertedData}
+          />
+        )}
+      </StyledLayoutContainer>
     </>
   );
 };
 
 export default App;
+
+const StyledLayoutContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
