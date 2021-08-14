@@ -12,23 +12,23 @@ const FileCard = ({ src, fileName, fileType }: FileCardProps) => {
       return (
         <div>
           <StyledImage src={src} />
-          {fileName}
-          {fileType}
+          <StyledFileName>{fileName}</StyledFileName>
+          <StyledFileType>{fileType}</StyledFileType>
         </div>
       );
     case "video/mp4":
       return (
         <div>
           <StyledVideo controls src={src} />
-          {fileName}
-          {fileType}
+          <StyledFileName>{fileName}</StyledFileName>
+          <StyledFileType>{fileType}</StyledFileType>
         </div>
       );
     default:
       return (
         <div>
-          {fileName}
-          {fileType}
+          <StyledFileName>{fileName}</StyledFileName>
+          <StyledFileType>{fileType}</StyledFileType>
         </div>
       );
   }
@@ -44,4 +44,25 @@ const StyledImage = styled.img`
 const StyledVideo = styled.video`
   max-width: 640px;
   width: 100%;
+`;
+
+const StyledFileName = styled.div`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #232c30;
+  margin-top: 24px;
+  margin-bottom: 4px;
+`;
+
+const StyledFileType = styled.div`
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #475c64;
+  margin-bottom: 24px;
 `;
