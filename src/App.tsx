@@ -17,6 +17,10 @@ const App = () => {
 
   const { isLoading, isDone, convertedData, convert } = useFFmpegConvert(file);
 
+  const percentText = Intl.NumberFormat("en", { style: "percent" }).format(
+    progress
+  );
+
   const handleReset = () => {
     setFile(null);
   };
@@ -61,14 +65,11 @@ const App = () => {
             <StyledProgressBarWrapper>
               <StyledProgressBar
                 style={{
-                  width: Intl.NumberFormat("en", { style: "percent" }).format(
-                    progress
-                  ),
+                  width: percentText,
                 }}
               />
             </StyledProgressBarWrapper>
-            Converting...{" "}
-            {Intl.NumberFormat("en", { style: "percent" }).format(progress)}
+            Converting... {percentText}
           </StyledLoadingContainer>
         )}
         {/* Result Component */}
