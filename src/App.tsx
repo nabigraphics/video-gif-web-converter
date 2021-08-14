@@ -15,8 +15,7 @@ const App = () => {
   const [file, setFile] = useState<File | null>(null);
   const [progress, setProgress] = useState(0);
 
-  const { isLoading, isDone, isError, convertedData, convert } =
-    useFFmpegConvert(file);
+  const { isLoading, isDone, convertedData, convert } = useFFmpegConvert(file);
 
   const handleReset = () => {
     setFile(null);
