@@ -12,7 +12,7 @@ Video or GIF convert with using ffmpeg.wasm
 - ffmpeg.wasm
 - emotion.js (CSS-in-JS)
 
-## DEMO
+## Demo
 
 [https://video-gif-web-converter.vercel.app/](https://video-gif-web-converter.vercel.app/)
 
