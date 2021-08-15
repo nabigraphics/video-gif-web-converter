@@ -16,6 +16,10 @@ Video or GIF convert with using ffmpeg.wasm
 
 [https://video-gif-web-converter.vercel.app/](https://video-gif-web-converter.vercel.app/)
 
+## Browser Support
+
+- Chrome ✅
+
 ## Getting Started
 
 ### Installation
