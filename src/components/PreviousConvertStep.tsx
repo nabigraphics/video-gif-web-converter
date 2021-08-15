@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import useBlobUrl from "../hooks/useBlobUrl";
 import getFilenameWithoutFileType from "../utils/getFilenameWithoutFileType";
 import FileCard from "./FileCard";
@@ -22,8 +22,6 @@ const PreviousConvertStep = ({
     [originalFile]
   );
   const fileType = useMemo(() => originalFile.type, [originalFile]);
-
-  const isImage = fileType.indexOf("image") > -1;
 
   return (
     <div>
